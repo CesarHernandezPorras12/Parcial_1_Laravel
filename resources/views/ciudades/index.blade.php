@@ -31,20 +31,7 @@
             </thead>
             <tbody>
                 @foreach($ciudades as $ciudad)
-                    <tr>
-                        <td>{{ $ciudad->nombre }}</td>
-                        <td>{{ $ciudad->pais }}</td>
-                        <td>{{ $ciudad->poblacion }}</td>
-                        <td>
-                            <a href="{{ route('ciudades.show', $ciudad->id) }}" class="btn btn-info btn-sm">Ver</a>
-                            <a href="{{ route('ciudades.edit', ['ciudade' => $ciudad->id]) }}" class="btn btn-primary btn-sm">Editar</a>
-                            <form action="{{ route('ciudades.destroy', $ciudad->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
+
 
 
                         <div class="col-4">
