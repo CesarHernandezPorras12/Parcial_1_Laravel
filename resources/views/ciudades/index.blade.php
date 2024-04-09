@@ -20,20 +20,8 @@
   </div>
   </form>
 </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>País</th>
-                    <th>Población</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
             <tbody>
                 @foreach($ciudades as $ciudad)
-
-
-
                         <div class="col-4">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
@@ -60,9 +48,5 @@
                 </div>
     </div>
 
-                @endforeach
-            </tbody>
-        </table>
-
-        
+                @endforeach        
 @endsection
