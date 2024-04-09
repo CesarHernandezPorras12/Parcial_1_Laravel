@@ -2,10 +2,10 @@
 
 @extends('layouts.app')
 
-@section('content')
+@section('container')
     <div class="container">
         <h1>Editar Ciudad</h1>
-        <form action="{{ route('ciudades.update', $ciudad->id) }}" method="POST">
+        <form method="POST" action="{{ route('ciudades.update', $ciudad->id) }}" >
             @csrf
             @method('PUT')
             <div class="form-group">

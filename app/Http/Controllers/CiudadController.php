@@ -9,11 +9,25 @@ class CiudadController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ciudades = Ciudad::all();
+        
+        $value = $request->input('value');
+        $campo = $request->input('campo');
+        
+        if($value){
+            $ciudades = Ciudad::where($campo, 'like', "%$value%")->get();
+        }else{
+            $ciudades = Ciudad::all();
+        }
         return view('ciudades.index', compact('ciudades'));
+        /*{
+            $ciudades = Ciudad::all();
+            return view('ciudades.index', compact('ciudades'));
+        }
+        */
     }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -35,16 +49,18 @@ class CiudadController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ciudad $ciudad)
+    public function show($id)
     {
+        $ciudad = Ciudad::findOrFail($id);
         return view('ciudades.show', compact('ciudad'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ciudad $ciudad)
+    public function edit($id)
     {
+        $ciudad = Ciudad::findOrFail($id);
         return view('ciudades.edit', ['ciudad' => $ciudad]);
     }
 
@@ -57,9 +73,9 @@ class CiudadController extends Controller
         return redirect()->route('ciudades.index');
     }
 
-    public function destroy(Ciudad $ciudad)
+    public function destroy($id)
     {
-        $ciudad->delete();
+        Ciudad::findOrFail($id)->delete();
         return redirect()->route('ciudades.index');
     }
 }

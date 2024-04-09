@@ -8,4 +8,3 @@ Route::get('/', function () {
 });
 
 Route::resource('ciudades', CiudadController::class);
-
